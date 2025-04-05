@@ -33,6 +33,7 @@ int main(int argc, char* argv[]) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);  // Black color
 
     // Define the initial position of the rectangle
+    int rect_step = 10;
     int rect_width = 100;
     int rect_height = 100;
     SDL_Rect rect = { 150, 100, rect_width, rect_height };

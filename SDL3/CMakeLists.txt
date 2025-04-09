@@ -7,15 +7,8 @@ find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 
-add_executable(${PROJECT_NAME} main.cpp)
 add_executable(3d_example 3d_example.c)
 add_executable(text_example text_example.cpp)
-
-target_link_libraries(${PROJECT_NAME}
-    PUBLIC
-    SDL3::SDL3
-    SDL3_image::SDL3_image
-)
 
 target_link_libraries(3d_example
     PUBLIC
@@ -28,4 +21,22 @@ target_link_libraries(text_example
     SDL3::SDL3
     SDL3_image::SDL3_image
     SDL3_ttf::SDL3_ttf
+)
+
+
+set(SOURCE_FILES
+    src/main.cpp
+    src/game.cpp
+    src/player.cpp
+    src/tools.cpp
+    src/animation.cpp
+)
+
+# Define the executable and link SDL2
+add_executable(${PROJECT_NAME} ${SOURCE_FILES})
+
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+    SDL3::SDL3
+    SDL3_image::SDL3_image
 )

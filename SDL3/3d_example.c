@@ -12,12 +12,14 @@ SDL_GLContext glContext;
 
 bool running = true;
 float angle = 0.f;
+float scale = 1.f;
 
-void drawCube(float angle) {
+void drawCube(float angle, float scale) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
     glTranslatef(0.f, 0.f, -5.f);
     glRotatef(angle, -0.5f, -1.f, -.5f);
+    glScalef(scale, scale, scale);
 
     glBegin(GL_QUADS);
 
@@ -92,6 +94,7 @@ int init() {
 
 void handleEvents() {
     SDL_Event e;
+
     while (SDL_PollEvent(&e)) {
         if (e.type == SDL_EVENT_QUIT)
             running = false;
@@ -103,15 +106,17 @@ void update(float delta) {
 
     if (keyboard_state[SDL_SCANCODE_A]) {
         angle += 90.0f * delta;
+        scale += 1.0f * delta;
     }
 
     if (keyboard_state[SDL_SCANCODE_D]) {
         angle -= 90.0f * delta;
+        scale -= 1.0f * delta;
     }
 }
 
 void render() {
-    drawCube(angle);
+    drawCube(angle, scale);
     SDL_GL_SwapWindow(window);
 }
 

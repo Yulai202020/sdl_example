@@ -117,19 +117,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sdl_example
-
-# Build rule for target.
-sdl_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdl_example
-.PHONY : sdl_example
-
-# fast build rule for target.
-sdl_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/build
-.PHONY : sdl_example/fast
-
-#=============================================================================
 # Target rules for targets named 3d_example
 
 # Build rule for target.
@@ -155,6 +142,19 @@ text_example/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/build
 .PHONY : text_example/fast
 
+#=============================================================================
+# Target rules for targets named sdl_example
+
+# Build rule for target.
+sdl_example: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdl_example
+.PHONY : sdl_example
+
+# fast build rule for target.
+sdl_example/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/build
+.PHONY : sdl_example/fast
+
 3d_example.o: 3d_example.c.o
 .PHONY : 3d_example.o
 
@@ -179,29 +179,125 @@ text_example/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.s
 .PHONY : 3d_example.c.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/animation.o: src/animation.cpp.o
+.PHONY : src/animation.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/animation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.o
+.PHONY : src/animation.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/animation.i: src/animation.cpp.i
+.PHONY : src/animation.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/animation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.i
+.PHONY : src/animation.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/animation.s: src/animation.cpp.s
+.PHONY : src/animation.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/animation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.s
+.PHONY : src/animation.cpp.s
+
+src/game.o: src/game.cpp.o
+.PHONY : src/game.o
+
+# target to build an object file
+src/game.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
+
+src/game.i: src/game.cpp.i
+.PHONY : src/game.i
+
+# target to preprocess a source file
+src/game.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
+
+src/game.s: src/game.cpp.s
+.PHONY : src/game.s
+
+# target to generate assembly for a file
+src/game.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/player.o: src/player.cpp.o
+.PHONY : src/player.o
+
+# target to build an object file
+src/player.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.o
+.PHONY : src/player.cpp.o
+
+src/player.i: src/player.cpp.i
+.PHONY : src/player.i
+
+# target to preprocess a source file
+src/player.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
+
+src/player.s: src/player.cpp.s
+.PHONY : src/player.s
+
+# target to generate assembly for a file
+src/player.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
+
+src/tools.o: src/tools.cpp.o
+.PHONY : src/tools.o
+
+# target to build an object file
+src/tools.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.o
+.PHONY : src/tools.cpp.o
+
+src/tools.i: src/tools.cpp.i
+.PHONY : src/tools.i
+
+# target to preprocess a source file
+src/tools.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.i
+.PHONY : src/tools.cpp.i
+
+src/tools.s: src/tools.cpp.s
+.PHONY : src/tools.s
+
+# target to generate assembly for a file
+src/tools.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.s
+.PHONY : src/tools.cpp.s
 
 text_example.o: text_example.cpp.o
 .PHONY : text_example.o
@@ -241,9 +337,21 @@ help:
 	@echo "... 3d_example.o"
 	@echo "... 3d_example.i"
 	@echo "... 3d_example.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/animation.o"
+	@echo "... src/animation.i"
+	@echo "... src/animation.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
+	@echo "... src/tools.o"
+	@echo "... src/tools.i"
+	@echo "... src/tools.s"
 	@echo "... text_example.o"
 	@echo "... text_example.i"
 	@echo "... text_example.s"

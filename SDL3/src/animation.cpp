@@ -7,8 +7,7 @@ Animation::~Animation()
 {
 }
 
-void Animation::showAnimation(animationProperties animation, SDL_FRect& src, int sizeSprite)
-{
+void Animation::showAnimation(animationProperties animation, SDL_FRect& src, int sizeSprite) {
 	Uint64 now = SDL_GetTicks();
 	int delay = now - lastUpdate;
 	if (delay >= animation.animationDelay) {
@@ -20,8 +19,30 @@ void Animation::showAnimation(animationProperties animation, SDL_FRect& src, int
 	}
 }
 
-bool Animation::reverseShowAnimation(animationProperties animation, SDL_FRect& src, int sizeSprite)
-{
+bool Animation::showAnimationOneTime(animationProperties animation, SDL_FRect& src, int sizeSprite) {
+    Uint64 now = SDL_GetTicks();
+    int delay = now - lastUpdate;
+
+    if (currentIndex >= animation.frames) {
+        // Animation has finished, keep showing the last frame
+        src.x = (animation.frames - 1) * sizeSprite;
+        src.y = sizeSprite * animation.y;
+        return true;
+    }
+
+    if (delay >= animation.animationDelay) {
+        lastUpdate = now;
+
+        src.x = currentIndex * sizeSprite;
+        src.y = sizeSprite * animation.y;
+
+        currentIndex++;
+    }
+
+    return false;
+}
+
+bool Animation::reverseShowAnimation(animationProperties animation, SDL_FRect& src, int sizeSprite) {
 	Uint64 now = SDL_GetTicks();
 	int delay = now - lastUpdate;
 	if (currentReverseIndex == -2) {

@@ -2,6 +2,7 @@
 #include "tools.h"
 #include "game.h"
 #include "structs.h"
+#include "entities.h"
 #include "animation.h"
 
 #include <stdbool.h>
@@ -16,93 +17,147 @@ bool Player::isDead() {
     return hp <= 0;
 }
 
-float Player::gethp() {
-    return hp;
-}
-
-bool Player::isFalling() {
-    return y < (WINDOW_HEIGHT - PLAYER_HITBOX_HEIGHT) || jumpingTime > 0;
-}
-
 SDL_AppResult Player::init() {
     texture = LoadTexture("assets/player.png");
 
-    current_frame = 0;
-    frame_timer = 0.0f;
-
-    y = WINDOW_HEIGHT - PLAYER_HITBOX_HEIGHT;
+    y = WINDOW_HEIGHT - PLAYER_TEXTURE_HEIGHT;
     x = 0;
 
     animations.idle = { 6, 100, 0 };
 	animations.walk = { 6, 100, 1 };
 	animations.attack_horizontal = { 6, 100, 2 };
-	animations.attack_down = {6, 100, 4};
+	animations.attack_down = { 6, 100, 4 };
 	animations.attack_top = { 6, 100, 6 };
+
+    animations.death = { 7, 150, 1 };
 
     return SDL_APP_CONTINUE;
 }
 
-SDL_AppResult Player::render() {
-    animation.showAnimation(animations.idle, src_rect, PLAYER_TEXTURE_WIDTH);
+SDL_AppResult Player::handleEvents(SDL_Event* event) {
+    switch (event->type) {
+        case SDL_EVENT_MOUSE_BUTTON_DOWN:
+            switch (event->button.button) {
+                case SDL_BUTTON_LEFT:
+                    isAttacking = true;
+                    isDefending = false;
+                    animationHandler.setCurrentIndex(0);
+                    break;
+                case SDL_BUTTON_RIGHT:
+                    isDefending = true;
+                    isAttacking = false;
+                    animationHandler.setCurrentIndex(0);
+                    break;
+                default:
+                    break;
+            }
+            break;
 
-    if (isFalling()) {
-    } else if (isDefending) {
-    } else {
+        case SDL_EVENT_MOUSE_BUTTON_UP:
+            switch (event->button.button) {
+                case SDL_BUTTON_LEFT:
+                    isAttacking = false;
+                    break;
+                case SDL_BUTTON_RIGHT:
+                    isDefending = false;
+                    break;
+                default:
+                    break;
+            }
+            break;
+
+        default:
+            break;
     }
-
-    RenderTexture_rect(texture, x, y, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT, &src_rect);
 
     return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult Player::update(float delta) {
-    const _Bool* keyboard_state = SDL_GetKeyboardState(NULL);
+    if (!isDead()) {
+        const bool* keyboard_state = SDL_GetKeyboardState(NULL);
+        isWalking = false;
 
-    // Handle attacking cooldown
-    if (attack_cooldown > 0) {
-        attack_cooldown = std::max(0.0f, attack_cooldown - delta);
-    }
+        // Handle attacking cooldown
+        if (attack_cooldown > 0) {
+            attack_cooldown = std::max(0.0f, attack_cooldown - delta);
+        }
 
-    // Handle defending cooldown
-    if (defending_cooldown > 0) {
-        defending_cooldown = std::max(0.0f, defending_cooldown - delta);
-    }
+        // Handle defending cooldown
+        if (defending_cooldown > 0) {
+            defending_cooldown = std::max(0.0f, defending_cooldown - delta);
+        }
 
-    // Check if the player is falling
-    if (isFalling()) {
+        // Handle jumping movement
+        if (keyboard_state[SDL_SCANCODE_W]) {
+            isWalking = true;
+            y -= ENTITY_SPEED * delta;
+        }
+
+        if (keyboard_state[SDL_SCANCODE_S]) {
+            isWalking = true;
+            y += ENTITY_SPEED * delta;
+        }
+
+        // Handle left/right movement
+        if (keyboard_state[SDL_SCANCODE_A]) {
+            flip = SDL_FLIP_HORIZONTAL;
+            isWalking = true;
+            x -= ENTITY_SPEED * delta;
+        }
+
+        if (keyboard_state[SDL_SCANCODE_D]) {
+            flip = SDL_FLIP_NONE;
+            isWalking = true;
+            x += ENTITY_SPEED * delta;
+        }
+
+        if (isWalking) {
+            animationHandler.showAnimation(animations.walk, src_rect, PLAYER_TEXTURE_WIDTH);
+        } else if (isAttacking) {
+            animationHandler.showAnimation(animations.attack_horizontal, src_rect, PLAYER_TEXTURE_WIDTH);
+
+            if (animationHandler.currentIndex == animations.attack_horizontal.frames - 1) {
+                Entity* entity = getNearestEntity(x, y, entities);
+
+                if (entity && !entity->isDead) {
+                    bool isLookingRight = flip == SDL_FLIP_NONE;
+                    if ((isLookingRight && x < entity->x) || (!isLookingRight && x > entity->x) || (x == entity->x)) {
+                        float damage = 50.0f*delta;
+                        entity->Damage(x + PLAYER_TEXTURE_WIDTH/2 , y + PLAYER_TEXTURE_HEIGHT/2, damage); // count from center of player texture
+                    }
+                }
+            }
+        } else {
+            animationHandler.showAnimation(animations.idle, src_rect, PLAYER_TEXTURE_WIDTH);
+        }
+    } else {
+        isWalking = false;
+        isAttacking = false;
         isDefending = false;
-        defending_cooldown = MAX_DEFENDING_COOLDOWN;
+        playDeathAnimation = true;
     }
 
-    // Handle jumping movement
-    if (jumpingTime > 0) {
-        y -= ENTITY_SPEED * delta;
-        jumpingTime -= delta;
-    } else if (isFalling()) {
-        y += FALLING_SPEED * delta;
-    } else if (keyboard_state[SDL_SCANCODE_W]) {
-        jumpingTime = MAX_JUMPING_TIME;
+    if (playDeathAnimation) {
+        int rc = animationHandler.showAnimationOneTime(animations.death, src_rect, PLAYER_TEXTURE_WIDTH);
+
+        if (rc) {
+            playDeathAnimation = false;
+
+            return SDL_APP_SUCCESS;
+        }
     }
 
-    // Handle left/right movement
-    if (keyboard_state[SDL_SCANCODE_A]) {
-        x -= ENTITY_SPEED * delta;
+    return SDL_APP_CONTINUE;
+}
+
+SDL_AppResult Player::render() {
+    if (!isDead()) {
+        RenderTexture_rect(texture, x, y, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT, &src_rect, flip);
     }
 
-    if (keyboard_state[SDL_SCANCODE_D]) {
-        x += ENTITY_SPEED * delta;
-    }
-
-    // Toggle defending state with shift key if not in cooldown
-    if (keyboard_state[SDL_SCANCODE_LSHIFT] && defending_cooldown == 0.0f) {
-        isDefending = !isDefending;
-        defending_cooldown = MAX_DEFENDING_COOLDOWN;
-    }
-
-    frame_timer += delta;
-    if (frame_timer >= animations.idle.animationDelay / 1000.0f) {
-        current_frame = (current_frame + 1) % animations.idle.frames;
-        frame_timer = 0.0f;
+    if (playDeathAnimation) {
+        RenderTexture_rect(death_texture, x, y, PLAYER_TEXTURE_WIDTH, PLAYER_TEXTURE_HEIGHT, &src_rect, SDL_FLIP_NONE);
     }
 
     return SDL_APP_CONTINUE;
@@ -110,7 +165,4 @@ SDL_AppResult Player::update(float delta) {
 
 void Player::cleanup() {
     SDL_DestroyTexture(texture);
-    // SDL_DestroyTexture(texture_idle);
-    // SDL_DestroyTexture(texture_jumping);
-    // SDL_DestroyTexture(texture_defending);
 }

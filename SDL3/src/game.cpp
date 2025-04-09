@@ -1,12 +1,17 @@
 #include "game.h"
 #include "player.h"
+#include "entities.h"
 #include "tools.h"
-
+#include <vector>
+#include <cmath>
+#include <algorithm>
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
 
 Player player = Player();
+SDL_Texture* death_texture;
+std::vector<Entity*> entities;
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
     int flags = 0;
@@ -22,7 +27,7 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
     }
 
     // Create window
-    window = SDL_CreateWindow(title, width, height, flags);
+    window = SDL_CreateWindow(title, width, height, flags | SDL_WINDOW_RESIZABLE);
     if (!window) {
         SDL_Log("Window error %s\n", SDL_GetError());
         return;
@@ -39,6 +44,8 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
 
     // Initialize player
     player.init();
+    death_texture = LoadTexture("assets/death.png");
+    initEntities(&entities);
 }
 
 void Game::handleEvents() {
@@ -61,6 +68,8 @@ void Game::handleEvents() {
         default:
             break;
     }
+
+    player.handleEvents(&event);
 }
 
 void Game::render() {
@@ -68,6 +77,10 @@ void Game::render() {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     player.render();
+
+    for (Entity* entity : entities) {
+        entity->render();
+    }
 
     SDL_RenderPresent(renderer);
 }
@@ -79,10 +92,20 @@ void Game::update(float delta) {
         isRunning = false;
     } else if (result == SDL_APP_CONTINUE) {
     }
+
+    for (Entity* entity : entities) {
+        entity->update(delta);
+    }
 }
 
 void Game::cleanup() {
     player.cleanup();
+
+    for (Entity* entity : entities) {
+        entity->cleanup();
+    }
+
+    SDL_DestroyTexture(death_texture);
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);

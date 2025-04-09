@@ -29,6 +29,7 @@ set(SOURCE_FILES
     src/game.cpp
     src/player.cpp
     src/tools.cpp
+    src/entities.cpp
     src/animation.cpp
 )
 

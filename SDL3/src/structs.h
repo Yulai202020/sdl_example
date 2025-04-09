@@ -15,6 +15,16 @@ typedef struct
     animationProperties attack_horizontal;
     animationProperties attack_top;
     animationProperties attack_down;
+
+    animationProperties death;
 } PlayerAnimationData;
+
+typedef struct
+{
+    animationProperties idle;
+
+    animationProperties death;
+} EntityAnimationData;
+
 
 #endif

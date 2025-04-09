@@ -203,6 +203,30 @@ src/animation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.s
 .PHONY : src/animation.cpp.s
 
+src/entities.o: src/entities.cpp.o
+.PHONY : src/entities.o
+
+# target to build an object file
+src/entities.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.o
+.PHONY : src/entities.cpp.o
+
+src/entities.i: src/entities.cpp.i
+.PHONY : src/entities.i
+
+# target to preprocess a source file
+src/entities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.i
+.PHONY : src/entities.cpp.i
+
+src/entities.s: src/entities.cpp.s
+.PHONY : src/entities.s
+
+# target to generate assembly for a file
+src/entities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.s
+.PHONY : src/entities.cpp.s
+
 src/game.o: src/game.cpp.o
 .PHONY : src/game.o
 
@@ -340,6 +364,9 @@ help:
 	@echo "... src/animation.o"
 	@echo "... src/animation.i"
 	@echo "... src/animation.s"
+	@echo "... src/entities.o"
+	@echo "... src/entities.i"
+	@echo "... src/entities.s"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"

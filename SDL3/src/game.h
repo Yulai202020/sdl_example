@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "player.h"
+#include "entities.h"
 #include "tools.h"
 
 #include <SDL3/SDL_main.h>
@@ -28,5 +29,9 @@ public:
 
 // Declare the game object as external
 extern Game game;
+
+extern Player player;
+extern std::vector<Entity*> entities;
+extern SDL_Texture* death_texture;
 
 #endif // GAME_H

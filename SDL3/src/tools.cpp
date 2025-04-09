@@ -25,9 +25,9 @@ void RenderTexture(SDL_Texture* texture, float x, float y, float width, float he
     }
 }
 
-void RenderTexture_rect(SDL_Texture* texture, int x, int y, int width, int height, SDL_FRect* src_rect) {
+void RenderTexture_rect(SDL_Texture* texture, int x, int y, int width, int height, SDL_FRect* src_rect, SDL_FlipMode flip) {
     // Create a destination rectangle (where to render on the screen)
     SDL_FRect dest_rect = { x, y, width, height };
 
-    SDL_RenderTexture(game.renderer, texture, src_rect, &dest_rect);
+    SDL_RenderTextureRotated(game.renderer, texture, src_rect, &dest_rect, 0, NULL, flip);
 }

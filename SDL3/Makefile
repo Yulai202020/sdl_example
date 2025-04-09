@@ -129,6 +129,56 @@ sdl_example/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/build
 .PHONY : sdl_example/fast
 
+#=============================================================================
+# Target rules for targets named 3d_example
+
+# Build rule for target.
+3d_example: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 3d_example
+.PHONY : 3d_example
+
+# fast build rule for target.
+3d_example/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/build
+.PHONY : 3d_example/fast
+
+#=============================================================================
+# Target rules for targets named text_example
+
+# Build rule for target.
+text_example: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 text_example
+.PHONY : text_example
+
+# fast build rule for target.
+text_example/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/build
+.PHONY : text_example/fast
+
+3d_example.o: 3d_example.c.o
+.PHONY : 3d_example.o
+
+# target to build an object file
+3d_example.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.o
+.PHONY : 3d_example.c.o
+
+3d_example.i: 3d_example.c.i
+.PHONY : 3d_example.i
+
+# target to preprocess a source file
+3d_example.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.i
+.PHONY : 3d_example.c.i
+
+3d_example.s: 3d_example.c.s
+.PHONY : 3d_example.s
+
+# target to generate assembly for a file
+3d_example.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.s
+.PHONY : 3d_example.c.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -153,6 +203,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+text_example.o: text_example.cpp.o
+.PHONY : text_example.o
+
+# target to build an object file
+text_example.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.o
+.PHONY : text_example.cpp.o
+
+text_example.i: text_example.cpp.i
+.PHONY : text_example.i
+
+# target to preprocess a source file
+text_example.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.i
+.PHONY : text_example.cpp.i
+
+text_example.s: text_example.cpp.s
+.PHONY : text_example.s
+
+# target to generate assembly for a file
+text_example.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.s
+.PHONY : text_example.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -161,10 +235,18 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... 3d_example"
 	@echo "... sdl_example"
+	@echo "... text_example"
+	@echo "... 3d_example.o"
+	@echo "... 3d_example.i"
+	@echo "... 3d_example.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... text_example.o"
+	@echo "... text_example.i"
+	@echo "... text_example.s"
 .PHONY : help
 
 

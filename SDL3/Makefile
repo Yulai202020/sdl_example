@@ -299,6 +299,30 @@ src/player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
+src/playerUI.o: src/playerUI.cpp.o
+.PHONY : src/playerUI.o
+
+# target to build an object file
+src/playerUI.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.o
+.PHONY : src/playerUI.cpp.o
+
+src/playerUI.i: src/playerUI.cpp.i
+.PHONY : src/playerUI.i
+
+# target to preprocess a source file
+src/playerUI.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.i
+.PHONY : src/playerUI.cpp.i
+
+src/playerUI.s: src/playerUI.cpp.s
+.PHONY : src/playerUI.s
+
+# target to generate assembly for a file
+src/playerUI.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.s
+.PHONY : src/playerUI.cpp.s
+
 src/tools.o: src/tools.cpp.o
 .PHONY : src/tools.o
 
@@ -376,6 +400,9 @@ help:
 	@echo "... src/player.o"
 	@echo "... src/player.i"
 	@echo "... src/player.s"
+	@echo "... src/playerUI.o"
+	@echo "... src/playerUI.i"
+	@echo "... src/playerUI.s"
 	@echo "... src/tools.o"
 	@echo "... src/tools.i"
 	@echo "... src/tools.s"

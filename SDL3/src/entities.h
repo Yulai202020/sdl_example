@@ -5,8 +5,10 @@
 #include "animation.h"
 
 #include <vector>
-#include <algorithm>
-#include <cmath>
+
+#include <SDL3/SDL.h>
+#include <SDL3/SDL_main.h>
+#include <SDL3_image/SDL_image.h>
 
 #define ENTITY_TEXTURE_WIDTH 128
 #define ENTITY_TEXTURE_HEIGHT 128

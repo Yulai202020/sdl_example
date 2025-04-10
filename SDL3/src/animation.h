@@ -1,6 +1,6 @@
 #pragma once
 
-#include"structs.h"
+#include "structs.h"
 
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>

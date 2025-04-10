@@ -1,9 +1,9 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-
 #include "game.h"
+
+#include <cmath>
+#include <vector>
 #include <stdbool.h>
+
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>

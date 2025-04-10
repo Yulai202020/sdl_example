@@ -2,16 +2,20 @@
 #include "player.h"
 #include "entities.h"
 #include "tools.h"
-#include <vector>
+
 #include <cmath>
+#include <vector>
 #include <algorithm>
+
 #include <SDL3/SDL_main.h>
 #include <SDL3/SDL.h>
 #include <SDL3_image/SDL_image.h>
+#include <SDL3_ttf/SDL_ttf.h>
 
 Player player = Player();
 SDL_Texture* death_texture;
 std::vector<Entity*> entities;
+TTF_Font* font;
 
 Game::Game(const char* title, int width, int height, bool fullscreen) {
     int flags = 0;
@@ -23,6 +27,16 @@ Game::Game(const char* title, int width, int height, bool fullscreen) {
     // Initialize SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         SDL_Log("Init error %s\n", SDL_GetError());
+        return;
+    }
+
+    if (TTF_Init() < 0) {
+        return;
+    }
+
+    font = TTF_OpenFont("assets/fonts/Tiny5.ttf", 48);
+    if (!font) {
+        SDL_Log("Failed to load font:", SDL_GetError());
         return;
     }
 
@@ -74,7 +88,6 @@ void Game::handleEvents() {
 
 void Game::render() {
     SDL_RenderClear(renderer);
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     player.render();
 
@@ -82,6 +95,7 @@ void Game::render() {
         entity->render();
     }
 
+    SDL_SetRenderDrawColor(renderer, 25, 25, 25, 255);
     SDL_RenderPresent(renderer);
 }
 
@@ -103,12 +117,17 @@ void Game::cleanup() {
 
     for (Entity* entity : entities) {
         entity->cleanup();
+        delete entity;
     }
 
     SDL_DestroyTexture(death_texture);
 
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
+
+    TTF_CloseFont(font);
+    TTF_Quit();
+
     SDL_Quit();
 }
 

@@ -31,6 +31,7 @@ set(SOURCE_FILES
     src/tools.cpp
     src/entities.cpp
     src/animation.cpp
+    src/playerUI.cpp
 )
 
 # Define the executable and link SDL2
@@ -40,4 +41,5 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC
     SDL3::SDL3
     SDL3_image::SDL3_image
+    SDL3_ttf::SDL3_ttf
 )

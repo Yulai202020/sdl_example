@@ -1,22 +1,20 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "playerUI.h"
 #include "structs.h"
 #include "animation.h"
 
+#include <stdbool.h>
 #include <SDL3/SDL.h>
-#include <vector>
-#include <algorithm>  // For std::max
-#include <cmath>      // For std::sqrt
+#include <SDL3/SDL_log.h>
+
+#define MAX_HEALTH 20
+#define FALLING_SPEED 300
+#define ENTITY_SPEED 100
 
 #define PLAYER_TEXTURE_WIDTH 192
 #define PLAYER_TEXTURE_HEIGHT 192
-
-#define FALLING_SPEED 300
-#define ENTITY_SPEED 100
-#define MAX_JUMPING_TIME 0.5f
-#define MAX_ATTACKING_COOLDOWN 2.5f
-#define MAX_DEFENDING_COOLDOWN 0.5f
 
 class Player {
 public:
@@ -27,18 +25,7 @@ public:
     Animation animationHandler;
     SDL_FlipMode flip;
 
-    // position
-    float x = 0;
-    float y = 0;
-    bool isWalking = false;
-
-    bool playDeathAnimation = false;
-
-    // fight
-    float attack_cooldown;
-    float defending_cooldown;
-    bool isDefending = false;
-    bool isAttacking = false;
+    float hp = MAX_HEALTH;
 
     // get smth
     void damage(float damage);
@@ -52,9 +39,17 @@ public:
     void cleanup();
 
 private:
-    float hp = 20.0f;
-};
+    PlayerUI playerUI;
+    float x = 0;
+    float y = 0;
+    bool isWalking = false;
 
-extern Player player;
+    bool playDeathAnimation = false;
+
+    float attack_cooldown;
+    float defending_cooldown;
+    bool isDefending = false;
+    bool isAttacking = false;
+};
 
 #endif

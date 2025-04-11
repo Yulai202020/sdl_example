@@ -1,22 +1,20 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(SDL3)
-
 find_package(SDL3 REQUIRED)
 find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 
-add_subdirectory(examples)
+add_executable(3d_example 3d_example.c)
+add_executable(text_example text_example.cpp)
 
-file(GLOB SOURCE_FILES
-    src/*.cpp
+target_link_libraries(3d_example
+    PUBLIC
+    SDL3::SDL3
+    OpenGL::GL
 )
 
-# Define the executable and link SDL2
-add_executable(game ${SOURCE_FILES})
-
-target_link_libraries(game
+target_link_libraries(text_example
     PUBLIC
     SDL3::SDL3
     SDL3_image::SDL3_image

@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named game
+
+# Build rule for target.
+game: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game
+.PHONY : game
+
+# fast build rule for target.
+game/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/build
+.PHONY : game/fast
+
+#=============================================================================
 # Target rules for targets named 3d_example
 
 # Build rule for target.
@@ -126,7 +139,7 @@ depend:
 
 # fast build rule for target.
 3d_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/build
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/3d_example.dir/build.make examples/CMakeFiles/3d_example.dir/build
 .PHONY : 3d_example/fast
 
 #=============================================================================
@@ -139,52 +152,15 @@ text_example: cmake_check_build_system
 
 # fast build rule for target.
 text_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/build
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/text_example.dir/build.make examples/CMakeFiles/text_example.dir/build
 .PHONY : text_example/fast
-
-#=============================================================================
-# Target rules for targets named sdl_example
-
-# Build rule for target.
-sdl_example: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sdl_example
-.PHONY : sdl_example
-
-# fast build rule for target.
-sdl_example/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/build
-.PHONY : sdl_example/fast
-
-3d_example.o: 3d_example.c.o
-.PHONY : 3d_example.o
-
-# target to build an object file
-3d_example.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.o
-.PHONY : 3d_example.c.o
-
-3d_example.i: 3d_example.c.i
-.PHONY : 3d_example.i
-
-# target to preprocess a source file
-3d_example.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.i
-.PHONY : 3d_example.c.i
-
-3d_example.s: 3d_example.c.s
-.PHONY : 3d_example.s
-
-# target to generate assembly for a file
-3d_example.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/3d_example.dir/build.make CMakeFiles/3d_example.dir/3d_example.c.s
-.PHONY : 3d_example.c.s
 
 src/animation.o: src/animation.cpp.o
 .PHONY : src/animation.o
 
 # target to build an object file
 src/animation.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/animation.cpp.o
 .PHONY : src/animation.cpp.o
 
 src/animation.i: src/animation.cpp.i
@@ -192,7 +168,7 @@ src/animation.i: src/animation.cpp.i
 
 # target to preprocess a source file
 src/animation.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/animation.cpp.i
 .PHONY : src/animation.cpp.i
 
 src/animation.s: src/animation.cpp.s
@@ -200,7 +176,7 @@ src/animation.s: src/animation.cpp.s
 
 # target to generate assembly for a file
 src/animation.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/animation.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/animation.cpp.s
 .PHONY : src/animation.cpp.s
 
 src/entities.o: src/entities.cpp.o
@@ -208,7 +184,7 @@ src/entities.o: src/entities.cpp.o
 
 # target to build an object file
 src/entities.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/entities.cpp.o
 .PHONY : src/entities.cpp.o
 
 src/entities.i: src/entities.cpp.i
@@ -216,7 +192,7 @@ src/entities.i: src/entities.cpp.i
 
 # target to preprocess a source file
 src/entities.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/entities.cpp.i
 .PHONY : src/entities.cpp.i
 
 src/entities.s: src/entities.cpp.s
@@ -224,7 +200,7 @@ src/entities.s: src/entities.cpp.s
 
 # target to generate assembly for a file
 src/entities.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/entities.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/entities.cpp.s
 .PHONY : src/entities.cpp.s
 
 src/game.o: src/game.cpp.o
@@ -232,7 +208,7 @@ src/game.o: src/game.cpp.o
 
 # target to build an object file
 src/game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.cpp.o
 .PHONY : src/game.cpp.o
 
 src/game.i: src/game.cpp.i
@@ -240,7 +216,7 @@ src/game.i: src/game.cpp.i
 
 # target to preprocess a source file
 src/game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.cpp.i
 .PHONY : src/game.cpp.i
 
 src/game.s: src/game.cpp.s
@@ -248,7 +224,7 @@ src/game.s: src/game.cpp.s
 
 # target to generate assembly for a file
 src/game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/game.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -256,7 +232,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -264,7 +240,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -272,7 +248,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/player.o: src/player.cpp.o
@@ -280,7 +256,7 @@ src/player.o: src/player.cpp.o
 
 # target to build an object file
 src/player.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/player.cpp.o
 .PHONY : src/player.cpp.o
 
 src/player.i: src/player.cpp.i
@@ -288,7 +264,7 @@ src/player.i: src/player.cpp.i
 
 # target to preprocess a source file
 src/player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/player.cpp.i
 .PHONY : src/player.cpp.i
 
 src/player.s: src/player.cpp.s
@@ -296,7 +272,7 @@ src/player.s: src/player.cpp.s
 
 # target to generate assembly for a file
 src/player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/player.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
 src/playerUI.o: src/playerUI.cpp.o
@@ -304,7 +280,7 @@ src/playerUI.o: src/playerUI.cpp.o
 
 # target to build an object file
 src/playerUI.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/playerUI.cpp.o
 .PHONY : src/playerUI.cpp.o
 
 src/playerUI.i: src/playerUI.cpp.i
@@ -312,7 +288,7 @@ src/playerUI.i: src/playerUI.cpp.i
 
 # target to preprocess a source file
 src/playerUI.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/playerUI.cpp.i
 .PHONY : src/playerUI.cpp.i
 
 src/playerUI.s: src/playerUI.cpp.s
@@ -320,7 +296,7 @@ src/playerUI.s: src/playerUI.cpp.s
 
 # target to generate assembly for a file
 src/playerUI.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/playerUI.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/playerUI.cpp.s
 .PHONY : src/playerUI.cpp.s
 
 src/tools.o: src/tools.cpp.o
@@ -328,7 +304,7 @@ src/tools.o: src/tools.cpp.o
 
 # target to build an object file
 src/tools.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/tools.cpp.o
 .PHONY : src/tools.cpp.o
 
 src/tools.i: src/tools.cpp.i
@@ -336,7 +312,7 @@ src/tools.i: src/tools.cpp.i
 
 # target to preprocess a source file
 src/tools.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/tools.cpp.i
 .PHONY : src/tools.cpp.i
 
 src/tools.s: src/tools.cpp.s
@@ -344,32 +320,8 @@ src/tools.s: src/tools.cpp.s
 
 # target to generate assembly for a file
 src/tools.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/sdl_example.dir/build.make CMakeFiles/sdl_example.dir/src/tools.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/game.dir/build.make CMakeFiles/game.dir/src/tools.cpp.s
 .PHONY : src/tools.cpp.s
-
-text_example.o: text_example.cpp.o
-.PHONY : text_example.o
-
-# target to build an object file
-text_example.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.o
-.PHONY : text_example.cpp.o
-
-text_example.i: text_example.cpp.i
-.PHONY : text_example.i
-
-# target to preprocess a source file
-text_example.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.i
-.PHONY : text_example.cpp.i
-
-text_example.s: text_example.cpp.s
-.PHONY : text_example.s
-
-# target to generate assembly for a file
-text_example.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/text_example.dir/build.make CMakeFiles/text_example.dir/text_example.cpp.s
-.PHONY : text_example.cpp.s
 
 # Help Target
 help:
@@ -380,11 +332,8 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 3d_example"
-	@echo "... sdl_example"
+	@echo "... game"
 	@echo "... text_example"
-	@echo "... 3d_example.o"
-	@echo "... 3d_example.i"
-	@echo "... 3d_example.s"
 	@echo "... src/animation.o"
 	@echo "... src/animation.i"
 	@echo "... src/animation.s"
@@ -406,9 +355,6 @@ help:
 	@echo "... src/tools.o"
 	@echo "... src/tools.i"
 	@echo "... src/tools.s"
-	@echo "... text_example.o"
-	@echo "... text_example.i"
-	@echo "... text_example.s"
 .PHONY : help
 
 

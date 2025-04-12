@@ -155,6 +155,32 @@ text_example/fast:
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/text_example.dir/build.make examples/CMakeFiles/text_example.dir/build
 .PHONY : text_example/fast
 
+#=============================================================================
+# Target rules for targets named circle
+
+# Build rule for target.
+circle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 circle
+.PHONY : circle
+
+# fast build rule for target.
+circle/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/build
+.PHONY : circle/fast
+
+#=============================================================================
+# Target rules for targets named music
+
+# Build rule for target.
+music: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 music
+.PHONY : music
+
+# fast build rule for target.
+music/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/build
+.PHONY : music/fast
+
 src/animation.o: src/animation.cpp.o
 .PHONY : src/animation.o
 
@@ -332,7 +358,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 3d_example"
+	@echo "... circle"
 	@echo "... game"
+	@echo "... music"
 	@echo "... text_example"
 	@echo "... src/animation.o"
 	@echo "... src/animation.i"

@@ -144,6 +144,34 @@ text_example/fast:
 	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/text_example.dir/build.make examples/CMakeFiles/text_example.dir/build
 .PHONY : text_example/fast
 
+# Convenience name for target.
+examples/CMakeFiles/circle.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/circle.dir/rule
+.PHONY : examples/CMakeFiles/circle.dir/rule
+
+# Convenience name for target.
+circle: examples/CMakeFiles/circle.dir/rule
+.PHONY : circle
+
+# fast build rule for target.
+circle/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/build
+.PHONY : circle/fast
+
+# Convenience name for target.
+examples/CMakeFiles/music.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/CMakeFiles/music.dir/rule
+.PHONY : examples/CMakeFiles/music.dir/rule
+
+# Convenience name for target.
+music: examples/CMakeFiles/music.dir/rule
+.PHONY : music
+
+# fast build rule for target.
+music/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/build
+.PHONY : music/fast
+
 3d_example.o: 3d_example.c.o
 .PHONY : 3d_example.o
 
@@ -167,6 +195,54 @@ text_example/fast:
 3d_example.c.s:
 	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/3d_example.dir/build.make examples/CMakeFiles/3d_example.dir/3d_example.c.s
 .PHONY : 3d_example.c.s
+
+circle.o: circle.cpp.o
+.PHONY : circle.o
+
+# target to build an object file
+circle.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/circle.cpp.o
+.PHONY : circle.cpp.o
+
+circle.i: circle.cpp.i
+.PHONY : circle.i
+
+# target to preprocess a source file
+circle.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/circle.cpp.i
+.PHONY : circle.cpp.i
+
+circle.s: circle.cpp.s
+.PHONY : circle.s
+
+# target to generate assembly for a file
+circle.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/circle.cpp.s
+.PHONY : circle.cpp.s
+
+music.o: music.cpp.o
+.PHONY : music.o
+
+# target to build an object file
+music.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/music.cpp.o
+.PHONY : music.cpp.o
+
+music.i: music.cpp.i
+.PHONY : music.i
+
+# target to preprocess a source file
+music.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/music.cpp.i
+.PHONY : music.cpp.i
+
+music.s: music.cpp.s
+.PHONY : music.s
+
+# target to generate assembly for a file
+music.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/music.cpp.s
+.PHONY : music.cpp.s
 
 text_example.o: text_example.cpp.o
 .PHONY : text_example.o
@@ -201,10 +277,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 3d_example"
+	@echo "... circle"
+	@echo "... music"
 	@echo "... text_example"
 	@echo "... 3d_example.o"
 	@echo "... 3d_example.i"
 	@echo "... 3d_example.s"
+	@echo "... circle.o"
+	@echo "... circle.i"
+	@echo "... circle.s"
+	@echo "... music.o"
+	@echo "... music.i"
+	@echo "... music.s"
 	@echo "... text_example.o"
 	@echo "... text_example.i"
 	@echo "... text_example.s"

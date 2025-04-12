@@ -1,12 +1,17 @@
 cmake_minimum_required(VERSION 3.14)
 
+project(examples)
+
 find_package(SDL3 REQUIRED)
 find_package(SDL3_image REQUIRED)
 find_package(SDL3_ttf REQUIRED)
+find_package(SDL3_mixer REQUIRED)
 find_package(OpenGL REQUIRED)
 
 add_executable(3d_example 3d_example.c)
 add_executable(text_example text_example.cpp)
+add_executable(circle circle.cpp)
+add_executable(music music.cpp)
 
 target_link_libraries(3d_example
     PUBLIC
@@ -19,4 +24,19 @@ target_link_libraries(text_example
     SDL3::SDL3
     SDL3_image::SDL3_image
     SDL3_ttf::SDL3_ttf
+)
+
+
+target_link_libraries(circle
+    PUBLIC
+    SDL3::SDL3
+    SDL3_image::SDL3_image
+    SDL3_ttf::SDL3_ttf
+)
+
+
+target_link_libraries(music
+    PUBLIC
+    SDL3::SDL3
+    SDL3_mixer::SDL3_mixer
 )

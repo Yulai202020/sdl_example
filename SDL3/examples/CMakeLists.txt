@@ -10,8 +10,8 @@ find_package(OpenGL REQUIRED)
 
 add_executable(3d_example 3d_example.c)
 add_executable(text_example text_example.cpp)
-add_executable(circle circle.cpp)
-add_executable(music music.cpp)
+add_executable(circle_example circle_example.cpp)
+add_executable(music_example music_example.cpp)
 
 target_link_libraries(3d_example
     PUBLIC
@@ -27,7 +27,7 @@ target_link_libraries(text_example
 )
 
 
-target_link_libraries(circle
+target_link_libraries(circle_example
     PUBLIC
     SDL3::SDL3
     SDL3_image::SDL3_image
@@ -35,7 +35,7 @@ target_link_libraries(circle
 )
 
 
-target_link_libraries(music
+target_link_libraries(music_example
     PUBLIC
     SDL3::SDL3
     SDL3_mixer::SDL3_mixer

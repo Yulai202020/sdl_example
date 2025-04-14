@@ -23,3 +23,10 @@ target_link_libraries(game
     SDL3_image::SDL3_image
     SDL3_ttf::SDL3_ttf
 )
+
+add_executable(snake snake.cpp)
+
+target_link_libraries(snake
+    PUBLIC
+    SDL3::SDL3
+)

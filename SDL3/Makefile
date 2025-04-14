@@ -130,6 +130,19 @@ game/fast:
 .PHONY : game/fast
 
 #=============================================================================
+# Target rules for targets named snake
+
+# Build rule for target.
+snake: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake
+.PHONY : snake
+
+# fast build rule for target.
+snake/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/snake.dir/build.make CMakeFiles/snake.dir/build
+.PHONY : snake/fast
+
+#=============================================================================
 # Target rules for targets named 3d_example
 
 # Build rule for target.
@@ -156,30 +169,54 @@ text_example/fast:
 .PHONY : text_example/fast
 
 #=============================================================================
-# Target rules for targets named circle
+# Target rules for targets named circle_example
 
 # Build rule for target.
-circle: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 circle
-.PHONY : circle
+circle_example: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 circle_example
+.PHONY : circle_example
 
 # fast build rule for target.
-circle/fast:
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle.dir/build.make examples/CMakeFiles/circle.dir/build
-.PHONY : circle/fast
+circle_example/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/circle_example.dir/build.make examples/CMakeFiles/circle_example.dir/build
+.PHONY : circle_example/fast
 
 #=============================================================================
-# Target rules for targets named music
+# Target rules for targets named music_example
 
 # Build rule for target.
-music: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 music
-.PHONY : music
+music_example: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 music_example
+.PHONY : music_example
 
 # fast build rule for target.
-music/fast:
-	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music.dir/build.make examples/CMakeFiles/music.dir/build
-.PHONY : music/fast
+music_example/fast:
+	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/music_example.dir/build.make examples/CMakeFiles/music_example.dir/build
+.PHONY : music_example/fast
+
+snake.o: snake.cpp.o
+.PHONY : snake.o
+
+# target to build an object file
+snake.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/snake.dir/build.make CMakeFiles/snake.dir/snake.cpp.o
+.PHONY : snake.cpp.o
+
+snake.i: snake.cpp.i
+.PHONY : snake.i
+
+# target to preprocess a source file
+snake.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/snake.dir/build.make CMakeFiles/snake.dir/snake.cpp.i
+.PHONY : snake.cpp.i
+
+snake.s: snake.cpp.s
+.PHONY : snake.s
+
+# target to generate assembly for a file
+snake.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/snake.dir/build.make CMakeFiles/snake.dir/snake.cpp.s
+.PHONY : snake.cpp.s
 
 src/animation.o: src/animation.cpp.o
 .PHONY : src/animation.o
@@ -358,10 +395,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... 3d_example"
-	@echo "... circle"
+	@echo "... circle_example"
 	@echo "... game"
-	@echo "... music"
+	@echo "... music_example"
+	@echo "... snake"
 	@echo "... text_example"
+	@echo "... snake.o"
+	@echo "... snake.i"
+	@echo "... snake.s"
 	@echo "... src/animation.o"
 	@echo "... src/animation.i"
 	@echo "... src/animation.s"

@@ -102,7 +102,7 @@ void handleEvents() {
 }
 
 void update(float delta) {
-    const _Bool* keyboard_state = SDL_GetKeyboardState(NULL);
+    const bool* keyboard_state = SDL_GetKeyboardState(NULL);
 
     if (keyboard_state[SDL_SCANCODE_A]) {
         angle += 90.0f * delta;

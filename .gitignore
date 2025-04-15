@@ -3,7 +3,3 @@
 CMakeFiles/
 cmake_install.cmake
 CMakeCache.txt
-
-*.o
-game
-*_example

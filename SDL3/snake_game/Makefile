@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/snake_game//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,18 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+snake_game/CMakeFiles/snake.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/CMakeFiles/snake.dir/rule
+.PHONY : snake_game/CMakeFiles/snake.dir/rule
+
+# Convenience name for target.
+snake: snake_game/CMakeFiles/snake.dir/rule
+.PHONY : snake
+
+# fast build rule for target.
+snake/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/build
+.PHONY : snake/fast
+
+snake.o: snake.cpp.o
+.PHONY : snake.o
+
+# target to build an object file
+snake.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.o
+.PHONY : snake.cpp.o
+
+snake.i: snake.cpp.i
+.PHONY : snake.i
+
+# target to preprocess a source file
+snake.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.i
+.PHONY : snake.cpp.i
+
+snake.s: snake.cpp.s
+.PHONY : snake.s
+
+# target to generate assembly for a file
+snake.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.s
+.PHONY : snake.cpp.s
 
 # Help Target
 help:
@@ -124,6 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... snake"
+	@echo "... snake.o"
+	@echo "... snake.i"
+	@echo "... snake.s"
 .PHONY : help
 
 

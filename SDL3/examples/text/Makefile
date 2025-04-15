@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples/text//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/text/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/text/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,18 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/text/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/text/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+examples/text/CMakeFiles/text_example.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/text/CMakeFiles/text_example.dir/rule
+.PHONY : examples/text/CMakeFiles/text_example.dir/rule
+
+# Convenience name for target.
+text_example: examples/text/CMakeFiles/text_example.dir/rule
+.PHONY : text_example
+
+# fast build rule for target.
+text_example/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/text/CMakeFiles/text_example.dir/build.make examples/text/CMakeFiles/text_example.dir/build
+.PHONY : text_example/fast
+
+text_example.o: text_example.cpp.o
+.PHONY : text_example.o
+
+# target to build an object file
+text_example.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/text/CMakeFiles/text_example.dir/build.make examples/text/CMakeFiles/text_example.dir/text_example.cpp.o
+.PHONY : text_example.cpp.o
+
+text_example.i: text_example.cpp.i
+.PHONY : text_example.i
+
+# target to preprocess a source file
+text_example.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/text/CMakeFiles/text_example.dir/build.make examples/text/CMakeFiles/text_example.dir/text_example.cpp.i
+.PHONY : text_example.cpp.i
+
+text_example.s: text_example.cpp.s
+.PHONY : text_example.s
+
+# target to generate assembly for a file
+text_example.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/text/CMakeFiles/text_example.dir/build.make examples/text/CMakeFiles/text_example.dir/text_example.cpp.s
+.PHONY : text_example.cpp.s
 
 # Help Target
 help:
@@ -124,6 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... text_example"
+	@echo "... text_example.o"
+	@echo "... text_example.i"
+	@echo "... text_example.s"
 .PHONY : help
 
 

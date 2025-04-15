@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples/3d//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/3d/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/3d/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,18 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/3d/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/3d/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+examples/3d/CMakeFiles/3d_example.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/3d/CMakeFiles/3d_example.dir/rule
+.PHONY : examples/3d/CMakeFiles/3d_example.dir/rule
+
+# Convenience name for target.
+3d_example: examples/3d/CMakeFiles/3d_example.dir/rule
+.PHONY : 3d_example
+
+# fast build rule for target.
+3d_example/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/3d/CMakeFiles/3d_example.dir/build.make examples/3d/CMakeFiles/3d_example.dir/build
+.PHONY : 3d_example/fast
+
+3d_example.o: 3d_example.c.o
+.PHONY : 3d_example.o
+
+# target to build an object file
+3d_example.c.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/3d/CMakeFiles/3d_example.dir/build.make examples/3d/CMakeFiles/3d_example.dir/3d_example.c.o
+.PHONY : 3d_example.c.o
+
+3d_example.i: 3d_example.c.i
+.PHONY : 3d_example.i
+
+# target to preprocess a source file
+3d_example.c.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/3d/CMakeFiles/3d_example.dir/build.make examples/3d/CMakeFiles/3d_example.dir/3d_example.c.i
+.PHONY : 3d_example.c.i
+
+3d_example.s: 3d_example.c.s
+.PHONY : 3d_example.s
+
+# target to generate assembly for a file
+3d_example.c.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/3d/CMakeFiles/3d_example.dir/build.make examples/3d/CMakeFiles/3d_example.dir/3d_example.c.s
+.PHONY : 3d_example.c.s
 
 # Help Target
 help:
@@ -124,6 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... 3d_example"
+	@echo "... 3d_example.o"
+	@echo "... 3d_example.i"
+	@echo "... 3d_example.s"
 .PHONY : help
 
 

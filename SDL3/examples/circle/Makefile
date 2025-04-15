@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples/circle//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/circle/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/circle/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,18 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/circle/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/circle/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+examples/circle/CMakeFiles/circle_example.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/circle/CMakeFiles/circle_example.dir/rule
+.PHONY : examples/circle/CMakeFiles/circle_example.dir/rule
+
+# Convenience name for target.
+circle_example: examples/circle/CMakeFiles/circle_example.dir/rule
+.PHONY : circle_example
+
+# fast build rule for target.
+circle_example/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/circle/CMakeFiles/circle_example.dir/build.make examples/circle/CMakeFiles/circle_example.dir/build
+.PHONY : circle_example/fast
+
+circle_example.o: circle_example.cpp.o
+.PHONY : circle_example.o
+
+# target to build an object file
+circle_example.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/circle/CMakeFiles/circle_example.dir/build.make examples/circle/CMakeFiles/circle_example.dir/circle_example.cpp.o
+.PHONY : circle_example.cpp.o
+
+circle_example.i: circle_example.cpp.i
+.PHONY : circle_example.i
+
+# target to preprocess a source file
+circle_example.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/circle/CMakeFiles/circle_example.dir/build.make examples/circle/CMakeFiles/circle_example.dir/circle_example.cpp.i
+.PHONY : circle_example.cpp.i
+
+circle_example.s: circle_example.cpp.s
+.PHONY : circle_example.s
+
+# target to generate assembly for a file
+circle_example.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/circle/CMakeFiles/circle_example.dir/build.make examples/circle/CMakeFiles/circle_example.dir/circle_example.cpp.s
+.PHONY : circle_example.cpp.s
 
 # Help Target
 help:
@@ -124,6 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... circle_example"
+	@echo "... circle_example.o"
+	@echo "... circle_example.i"
+	@echo "... circle_example.s"
 .PHONY : help
 
 

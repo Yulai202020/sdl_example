@@ -33,6 +33,7 @@ class Player {
 
 Player* player = new Player(1, 1);
 Coords direction = {1, 0};
+Coords nextDirection = {1, 0};
 Coords apples[5];
 
 SDL_Window* window;
@@ -77,34 +78,28 @@ SDL_AppResult handleEvents() {
     switch (event.type) {
         case SDL_EVENT_QUIT:
             return SDL_APP_SUCCESS;
-            break;
         case SDL_EVENT_KEY_DOWN:
             switch (event.key.key) {
                 case SDLK_ESCAPE:
                     return SDL_APP_SUCCESS;
-                    break;
                 case SDLK_W:
                     if (direction.y != 1) {
-                        direction.y = -1;
-                        direction.x = 0;
+                        nextDirection = {0, -1};
                     }
                     break;
                 case SDLK_S:
                     if (direction.y != -1) {
-                        direction.y = 1;
-                        direction.x = 0;
+                        nextDirection = {0, 1};
                     }
                     break;
                 case SDLK_A:
                     if (direction.x != 1) {
-                        direction.x = -1;
-                        direction.y = 0;
+                        nextDirection = {-1, 0};
                     }
                     break;
                 case SDLK_D:
                     if (direction.x != -1) {
-                        direction.x = 1;
-                        direction.y = 0;
+                        nextDirection = {1, 0};
                     }
                     break;
                 default:
@@ -120,6 +115,7 @@ SDL_AppResult handleEvents() {
 
 SDL_AppResult update(float delta) {
     Tail* head = player->head;
+
     for (int i = 0; i < 5; i++) {
         if (head->x == apples[i].x && head->y == apples[i].y) {
             player->isgrow = true;
@@ -131,6 +127,8 @@ SDL_AppResult update(float delta) {
     }
 
     if (timer >= TIME_FOR_MOVE) {
+        direction = nextDirection;
+
         int prevX = head->x;
         int prevY = head->y;
 
@@ -170,24 +168,46 @@ SDL_AppResult update(float delta) {
         return SDL_APP_SUCCESS;
     }
 
+    Tail* tail = head->next;
+    while (tail != nullptr) {
+        if (tail->x == head->x && tail->y == head->y) {
+            return SDL_APP_SUCCESS;
+        }
+
+        tail = tail->next;
+    }
+
     timer += delta;
 
     return SDL_APP_CONTINUE;
 }
 
 SDL_AppResult render() {
+    // here is problem
     SDL_RenderClear(renderer);
+
+    // render head
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-    Tail* tail = player->head;
+
+    Tail* head = player->head;
+    SDL_FRect dest_rect = {head->x*CELL_SIZE, head->y*CELL_SIZE, CELL_SIZE, CELL_SIZE};
+    SDL_RenderFillRect(renderer, &dest_rect);
+
+    // render tail
+    SDL_SetRenderDrawColor(renderer, 200, 0, 0, 255);
+    
+    Tail* tail = head->next;
 
     while (tail != nullptr) {
-        SDL_FRect dest_rect = {tail->x*CELL_SIZE, tail->y*CELL_SIZE, CELL_SIZE, CELL_SIZE};
+        dest_rect.x = tail->x*CELL_SIZE;
+        dest_rect.y = tail->y*CELL_SIZE;
 
         SDL_RenderFillRect(renderer, &dest_rect);
 
         tail = tail->next;
     }
 
+    // render apples
     SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 
     for (int i = 0; i < 5; i++) {
@@ -195,6 +215,7 @@ SDL_AppResult render() {
         SDL_RenderFillRect(renderer, &dest_rect);
     }
 
+    // render background
     SDL_SetRenderDrawColor(renderer, 25, 25, 25, 255);
     SDL_RenderPresent(renderer);
 
@@ -249,10 +270,7 @@ int main() {
             break;
         }
 
-        if (render() == SDL_APP_SUCCESS) {
-            isRunning = false;
-            break;
-        }
+        render();
     }
 
     // cleanup

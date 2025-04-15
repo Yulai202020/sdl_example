@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/all
+	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/examples/music//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/music/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/clean
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/music/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,18 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/music/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/preinstall
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/music/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
 	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+examples/music/CMakeFiles/music_example.dir/rule:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/music/CMakeFiles/music_example.dir/rule
+.PHONY : examples/music/CMakeFiles/music_example.dir/rule
+
+# Convenience name for target.
+music_example: examples/music/CMakeFiles/music_example.dir/rule
+.PHONY : music_example
+
+# fast build rule for target.
+music_example/fast:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/music/CMakeFiles/music_example.dir/build.make examples/music/CMakeFiles/music_example.dir/build
+.PHONY : music_example/fast
+
+music_example.o: music_example.cpp.o
+.PHONY : music_example.o
+
+# target to build an object file
+music_example.cpp.o:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/music/CMakeFiles/music_example.dir/build.make examples/music/CMakeFiles/music_example.dir/music_example.cpp.o
+.PHONY : music_example.cpp.o
+
+music_example.i: music_example.cpp.i
+.PHONY : music_example.i
+
+# target to preprocess a source file
+music_example.cpp.i:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/music/CMakeFiles/music_example.dir/build.make examples/music/CMakeFiles/music_example.dir/music_example.cpp.i
+.PHONY : music_example.cpp.i
+
+music_example.s: music_example.cpp.s
+.PHONY : music_example.s
+
+# target to generate assembly for a file
+music_example.cpp.s:
+	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f examples/music/CMakeFiles/music_example.dir/build.make examples/music/CMakeFiles/music_example.dir/music_example.cpp.s
+.PHONY : music_example.cpp.s
 
 # Help Target
 help:
@@ -124,6 +162,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... music_example"
+	@echo "... music_example.o"
+	@echo "... music_example.i"
+	@echo "... music_example.s"
 .PHONY : help
 
 

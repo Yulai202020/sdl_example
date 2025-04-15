@@ -94,6 +94,9 @@ int main(int argc, char* argv[]) {
                 break;
             case SDL_EVENT_KEY_DOWN:
                 switch (event.key.key) {
+                    case SDLK_ESCAPE:
+                        return SDL_APP_SUCCESS;
+                        break;
                     case SDLK_SPACE:
                         if (isMusicRunning) {
                             Mix_HaltMusic();

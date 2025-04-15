@@ -54,12 +54,21 @@ int init() {
 }
 
 SDL_AppResult handleEvents() {
-    SDL_Event e;
+    SDL_Event event;
 
-    while (SDL_PollEvent(&e)) {
-        switch (e.type) {
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
             case SDL_EVENT_QUIT:
                 return SDL_APP_SUCCESS;
+                break;
+            case SDL_EVENT_KEY_DOWN:
+                switch (event.key.key) {
+                    case SDLK_ESCAPE:
+                        return SDL_APP_SUCCESS;
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;

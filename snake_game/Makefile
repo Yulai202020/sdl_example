@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yulai/projects/sdl/SDL3
+CMAKE_SOURCE_DIR = /home/yulai/projects/sdl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yulai/projects/sdl/SDL3
+CMAKE_BINARY_DIR = /home/yulai/projects/sdl
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/snake_game//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/CMakeFiles /home/yulai/projects/sdl/snake_game//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/clean
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 snake_game/CMakeFiles/snake.dir/rule:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/CMakeFiles/snake.dir/rule
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 snake_game/CMakeFiles/snake.dir/rule
 .PHONY : snake_game/CMakeFiles/snake.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ snake: snake_game/CMakeFiles/snake.dir/rule
 
 # fast build rule for target.
 snake/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/build
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/build
 .PHONY : snake/fast
 
 snake.o: snake.cpp.o
@@ -135,7 +135,7 @@ snake.o: snake.cpp.o
 
 # target to build an object file
 snake.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.o
 .PHONY : snake.cpp.o
 
 snake.i: snake.cpp.i
@@ -143,7 +143,7 @@ snake.i: snake.cpp.i
 
 # target to preprocess a source file
 snake.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.i
 .PHONY : snake.cpp.i
 
 snake.s: snake.cpp.s
@@ -151,7 +151,7 @@ snake.s: snake.cpp.s
 
 # target to generate assembly for a file
 snake.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f snake_game/CMakeFiles/snake.dir/build.make snake_game/CMakeFiles/snake.dir/snake.cpp.s
 .PHONY : snake.cpp.s
 
 # Help Target
@@ -177,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

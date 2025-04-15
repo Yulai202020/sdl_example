@@ -14,9 +14,6 @@
 SDL_Window* window;
 SDL_Renderer* renderer;
 
-// game
-bool isRunning = true;
-
 class Text {
     public:
         SDL_Texture* texture;
@@ -67,9 +64,7 @@ SDL_Texture* createText(const char* text, Uint8 font_size, Uint8 red, Uint8 gree
     return textTexture;
 }
 
-
 // main functions
-
 int init() {
     // init sdl
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -109,19 +104,19 @@ int init() {
     return 0;
 }
 
-void handlerEvents() {
+SDL_AppResult handlerEvents() {
     SDL_Event event;
 
     SDL_PollEvent(&event);
 
     switch (event.type) {
         case SDL_EVENT_QUIT:
-            isRunning = false;
+            return SDL_APP_SUCCESS;
             break;
         case SDL_EVENT_KEY_DOWN:
             switch (event.key.key) {
                 case SDLK_ESCAPE:
-                    isRunning = false;
+                    return SDL_APP_SUCCESS;
                     break;
                 default:
                     break;
@@ -130,18 +125,23 @@ void handlerEvents() {
         default:
             break;
     }
+
+    return SDL_APP_CONTINUE;
 }
 
-void render() {
+SDL_AppResult render() {
     SDL_RenderClear(renderer);
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
     RenderTexture(text.texture, 0, 0, WINDOW_WIDTH, WINDOW_WIDTH / text.lenght * 2);
 
     SDL_RenderPresent(renderer);
+
+    return SDL_APP_CONTINUE;
 }
 
-void update(float delta) {
+SDL_AppResult update(float delta) {
+    return SDL_APP_CONTINUE;
 }
 
 void cleanup() {
@@ -157,6 +157,8 @@ int main() {
     Uint64 current_tick = 0;
     float delta;
 
+    bool isRunning = true;
+
     if (init() != 0) {
         return 1;
     }
@@ -167,9 +169,17 @@ int main() {
         current_tick = SDL_GetTicks();
         delta = (current_tick - last_tick) / 1000.0f;
 
-        handlerEvents();
-        update(delta);
-        render();
+        if (handlerEvents() != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
+
+        if (update(delta) != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
+
+        if (render() != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
     }
 
     // clean up

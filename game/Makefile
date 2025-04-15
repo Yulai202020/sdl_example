@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yulai/projects/sdl/SDL3
+CMAKE_SOURCE_DIR = /home/yulai/projects/sdl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yulai/projects/sdl/SDL3
+CMAKE_BINARY_DIR = /home/yulai/projects/sdl
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles /home/yulai/projects/sdl/SDL3/game//CMakeFiles/progress.marks
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/SDL3/CMakeFiles 0
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/CMakeFiles /home/yulai/projects/sdl/game//CMakeFiles/progress.marks
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yulai/projects/sdl/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/clean
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,22 +103,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/preinstall
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/preinstall
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 game/CMakeFiles/game.dir/rule:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/CMakeFiles/game.dir/rule
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 game/CMakeFiles/game.dir/rule
 .PHONY : game/CMakeFiles/game.dir/rule
 
 # Convenience name for target.
@@ -127,7 +127,7 @@ game: game/CMakeFiles/game.dir/rule
 
 # fast build rule for target.
 game/fast:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/build
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/build
 .PHONY : game/fast
 
 src/animation.o: src/animation.cpp.o
@@ -135,7 +135,7 @@ src/animation.o: src/animation.cpp.o
 
 # target to build an object file
 src/animation.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.o
 .PHONY : src/animation.cpp.o
 
 src/animation.i: src/animation.cpp.i
@@ -143,7 +143,7 @@ src/animation.i: src/animation.cpp.i
 
 # target to preprocess a source file
 src/animation.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.i
 .PHONY : src/animation.cpp.i
 
 src/animation.s: src/animation.cpp.s
@@ -151,7 +151,7 @@ src/animation.s: src/animation.cpp.s
 
 # target to generate assembly for a file
 src/animation.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/animation.cpp.s
 .PHONY : src/animation.cpp.s
 
 src/entities.o: src/entities.cpp.o
@@ -159,7 +159,7 @@ src/entities.o: src/entities.cpp.o
 
 # target to build an object file
 src/entities.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.o
 .PHONY : src/entities.cpp.o
 
 src/entities.i: src/entities.cpp.i
@@ -167,7 +167,7 @@ src/entities.i: src/entities.cpp.i
 
 # target to preprocess a source file
 src/entities.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.i
 .PHONY : src/entities.cpp.i
 
 src/entities.s: src/entities.cpp.s
@@ -175,7 +175,7 @@ src/entities.s: src/entities.cpp.s
 
 # target to generate assembly for a file
 src/entities.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/entities.cpp.s
 .PHONY : src/entities.cpp.s
 
 src/game.o: src/game.cpp.o
@@ -183,7 +183,7 @@ src/game.o: src/game.cpp.o
 
 # target to build an object file
 src/game.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.o
 .PHONY : src/game.cpp.o
 
 src/game.i: src/game.cpp.i
@@ -191,7 +191,7 @@ src/game.i: src/game.cpp.i
 
 # target to preprocess a source file
 src/game.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.i
 .PHONY : src/game.cpp.i
 
 src/game.s: src/game.cpp.s
@@ -199,7 +199,7 @@ src/game.s: src/game.cpp.s
 
 # target to generate assembly for a file
 src/game.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -207,7 +207,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -215,7 +215,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -223,7 +223,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/player.o: src/player.cpp.o
@@ -231,7 +231,7 @@ src/player.o: src/player.cpp.o
 
 # target to build an object file
 src/player.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.o
 .PHONY : src/player.cpp.o
 
 src/player.i: src/player.cpp.i
@@ -239,7 +239,7 @@ src/player.i: src/player.cpp.i
 
 # target to preprocess a source file
 src/player.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.i
 .PHONY : src/player.cpp.i
 
 src/player.s: src/player.cpp.s
@@ -247,7 +247,7 @@ src/player.s: src/player.cpp.s
 
 # target to generate assembly for a file
 src/player.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
 src/playerUI.o: src/playerUI.cpp.o
@@ -255,7 +255,7 @@ src/playerUI.o: src/playerUI.cpp.o
 
 # target to build an object file
 src/playerUI.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.o
 .PHONY : src/playerUI.cpp.o
 
 src/playerUI.i: src/playerUI.cpp.i
@@ -263,7 +263,7 @@ src/playerUI.i: src/playerUI.cpp.i
 
 # target to preprocess a source file
 src/playerUI.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.i
 .PHONY : src/playerUI.cpp.i
 
 src/playerUI.s: src/playerUI.cpp.s
@@ -271,7 +271,7 @@ src/playerUI.s: src/playerUI.cpp.s
 
 # target to generate assembly for a file
 src/playerUI.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/playerUI.cpp.s
 .PHONY : src/playerUI.cpp.s
 
 src/tools.o: src/tools.cpp.o
@@ -279,7 +279,7 @@ src/tools.o: src/tools.cpp.o
 
 # target to build an object file
 src/tools.cpp.o:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.o
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.o
 .PHONY : src/tools.cpp.o
 
 src/tools.i: src/tools.cpp.i
@@ -287,7 +287,7 @@ src/tools.i: src/tools.cpp.i
 
 # target to preprocess a source file
 src/tools.cpp.i:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.i
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.i
 .PHONY : src/tools.cpp.i
 
 src/tools.s: src/tools.cpp.s
@@ -295,7 +295,7 @@ src/tools.s: src/tools.cpp.s
 
 # target to generate assembly for a file
 src/tools.cpp.s:
-	cd /home/yulai/projects/sdl/SDL3 && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.s
+	cd /home/yulai/projects/sdl && $(MAKE) $(MAKESILENT) -f game/CMakeFiles/game.dir/build.make game/CMakeFiles/game.dir/src/tools.cpp.s
 .PHONY : src/tools.cpp.s
 
 # Help Target
@@ -339,6 +339,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/yulai/projects/sdl/SDL3 && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/yulai/projects/sdl && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

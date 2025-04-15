@@ -10,7 +10,6 @@
 SDL_Window* window;
 SDL_GLContext glContext;
 
-bool running = true;
 float angle = 0.f;
 float scale = 1.f;
 
@@ -92,16 +91,33 @@ int init() {
     return 0;
 }
 
-void handleEvents() {
+void init_gl() {
+    glEnable(GL_DEPTH_TEST);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    float aspect = (float) WINDOW_WIDTH / WINDOW_HEIGHT;
+    glFrustum(-aspect, aspect, -1.0, 1.0, 1.0, 100.0);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+SDL_AppResult handleEvents() {
     SDL_Event e;
 
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_EVENT_QUIT)
-            running = false;
+        switch (e.type) {
+            case SDL_EVENT_QUIT:
+                return SDL_APP_SUCCESS;
+                break;
+            
+            default:
+                break;
+        }
     }
+
+    return SDL_APP_CONTINUE;
 }
 
-void update(float delta) {
+SDL_AppResult update(float delta) {
     const bool* keyboard_state = SDL_GetKeyboardState(NULL);
 
     if (keyboard_state[SDL_SCANCODE_A]) {
@@ -113,11 +129,15 @@ void update(float delta) {
         angle -= 90.0f * delta;
         scale -= 1.0f * delta;
     }
+
+    return SDL_APP_CONTINUE;
 }
 
-void render() {
+SDL_AppResult render() {
     drawCube(angle, scale);
     SDL_GL_SwapWindow(window);
+
+    return SDL_APP_CONTINUE;
 }
 
 void cleanup() {
@@ -131,23 +151,27 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    glEnable(GL_DEPTH_TEST);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    float aspect = (float) WINDOW_WIDTH / WINDOW_HEIGHT;
-    glFrustum(-aspect, aspect, -1.0, 1.0, 1.0, 100.0);
-    glMatrixMode(GL_MODELVIEW);
+    init_gl();
 
+    bool isRunning = true;
     Uint64 lastTicks = SDL_GetTicks();
 
-    while (running) {
+    while (isRunning) {
         Uint64 currentTicks = SDL_GetTicks();
         float deltaTime = (currentTicks - lastTicks) / 1000.0f;
         lastTicks = currentTicks;
 
-        handleEvents();
-        update(deltaTime);
-        render();
+        if (handleEvents() != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
+
+        if (update(deltaTime) != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
+
+        if (render() != SDL_APP_CONTINUE) {
+            isRunning = false;
+        }
     }
 
     cleanup();

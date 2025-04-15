@@ -10,6 +10,27 @@
 
 SDL_Window* window;
 SDL_Renderer* renderer;
+Mix_Music* currentMusic;
+
+float musicTime = 0;
+bool isMusicRunning = true;
+
+Mix_Music* loadMusic(const char* path) {
+    Mix_Music* music = Mix_LoadMUS(path);
+
+    if (!music) {
+        SDL_Log("Mix_LoadMUS Error: %s", SDL_GetError());
+        Mix_CloseAudio();
+        SDL_Quit();
+        return NULL;
+    }
+
+    return music;
+}
+
+float getMusicLength(Mix_Music* music) {
+    return Mix_MusicDuration(music);
+}
 
 int init() {
     if (SDL_Init(SDL_INIT_AUDIO | SDL_INIT_VIDEO) < 0) {
@@ -50,6 +71,78 @@ int init_mixer() {
     return 0;
 }
 
+SDL_AppResult handleEvents() {
+    SDL_Event event;
+    SDL_PollEvent(&event);
+
+    switch (event.type) {
+        case SDL_EVENT_QUIT:
+            return SDL_APP_SUCCESS;
+            break;
+        case SDL_EVENT_KEY_DOWN:
+            switch (event.key.key) {
+                case SDLK_ESCAPE:
+                    return SDL_APP_SUCCESS;
+                    break;
+                case SDLK_SPACE:
+                    if (isMusicRunning) {
+                        Mix_HaltMusic();
+                    } else {
+                        Mix_PlayMusic(currentMusic, 0);
+                    }
+
+                    isMusicRunning = !isMusicRunning;
+                    break;
+                case SDLK_RIGHT:
+                    musicTime += 10;
+                    Mix_SetMusicPosition(musicTime);
+                    break;
+                case SDLK_LEFT:
+                    musicTime -= 10;
+                    Mix_SetMusicPosition(musicTime);
+                    break;
+                default:
+                    break;
+            }
+
+            break;
+        default:
+            break;
+    }
+
+    return SDL_APP_CONTINUE;
+}
+
+SDL_AppResult update(float delta) {
+    if (musicTime < 0) {
+        musicTime = 0;
+    }
+
+    if (musicTime > getMusicLength(currentMusic)) {
+        musicTime = getMusicLength(currentMusic);
+    }
+
+    if (isMusicRunning) {
+        musicTime += delta;
+    }
+
+    return SDL_APP_CONTINUE;
+}
+
+SDL_AppResult render() {
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 25, 25, 25, 255);
+    SDL_RenderPresent(renderer);
+
+    return SDL_APP_CONTINUE;
+}
+
+void cleanup() {
+    Mix_FreeMusic(currentMusic);
+    Mix_CloseAudio();
+    SDL_Quit();
+}
+
 int main(int argc, char* argv[]) {
     if (init()) {
         return 1;
@@ -59,22 +152,16 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    Mix_Music* music = Mix_LoadMUS("music.mp3");
-    if (!music) {
-        std::cerr << "Mix_LoadMUS Error: " << SDL_GetError() << std::endl;
-        Mix_CloseAudio();
-        SDL_Quit();
+    currentMusic = loadMusic("music.mp3");
+    if (!currentMusic) {
         return 1;
     }
 
-    Mix_PlayMusic(music, LOOPS);
+    Mix_PlayMusic(currentMusic, LOOPS);
 
-    float time = 0;
-    bool isMusicRunning = true;
     bool isRunning = true;
-    const float musicLength = Mix_MusicDuration(music);
 
-    Mix_SetMusicPosition(time);
+    Mix_SetMusicPosition(musicTime);
 
     Uint64 last_tick = 0;
     Uint64 current_tick = 0;
@@ -85,62 +172,20 @@ int main(int argc, char* argv[]) {
         current_tick = SDL_GetTicks();
         delta = (current_tick - last_tick) / 1000.0f;
 
-        SDL_Event event;
-        SDL_PollEvent(&event);
-
-        switch (event.type) {
-            case SDL_EVENT_QUIT:
-                isRunning = false;
-                break;
-            case SDL_EVENT_KEY_DOWN:
-                switch (event.key.key) {
-                    case SDLK_ESCAPE:
-                        return SDL_APP_SUCCESS;
-                        break;
-                    case SDLK_SPACE:
-                        if (isMusicRunning) {
-                            Mix_HaltMusic();
-                        } else {
-                            Mix_PlayMusic(music, 0);
-                        }
-
-                        isMusicRunning = !isMusicRunning;
-                        break;
-                    case SDLK_RIGHT:
-                        time += 10;
-                        break;
-                    case SDLK_LEFT:
-                        time -= 10;
-                        break;
-                    default:
-                        break;
-                }
-
-                Mix_SetMusicPosition(time);
-                break;
-            default:
-                break;
+        if (handleEvents() != SDL_APP_CONTINUE) {
+            isRunning = false;
         }
 
-        if (time < 0) {
-            time = 0;
+        if (update(delta) != SDL_APP_CONTINUE) {
+            isRunning = false;
         }
 
-        if (time > musicLength) {
-            time = musicLength;
-        }
-
-        SDL_RenderClear(renderer);
-        SDL_SetRenderDrawColor(renderer, 25, 25, 25, 255);
-        SDL_RenderPresent(renderer);
-
-        if (isMusicRunning) {
-            time += delta;
+        if (render() != SDL_APP_CONTINUE) {
+            isRunning = false;
         }
     }
 
-    Mix_FreeMusic(music);
-    Mix_CloseAudio();
-    SDL_Quit();
+    cleanup();
+
     return 0;
 }

@@ -1,6 +1,8 @@
 #include <SDL3/SDL.h>
 #include <SDL3_mixer/SDL_mixer.h>
+#include <algorithm>
 #include <iostream>
+#include <stdexcept>
 
 #define WINDOW_TITLE "music"
 #define WINDOW_WIDTH 800
@@ -12,7 +14,7 @@ SDL_Window* window;
 SDL_Renderer* renderer;
 Mix_Music* currentMusic;
 
-float musicTime = 0;
+float musicTime = 0.0f;
 bool isMusicRunning = true;
 
 Mix_Music* loadMusic(const char* path) {
@@ -30,6 +32,10 @@ Mix_Music* loadMusic(const char* path) {
 
 float getMusicLength(Mix_Music* music) {
     return Mix_MusicDuration(music);
+}
+
+float getMusicTime(Mix_Music* music) {
+    return Mix_GetMusicPosition(music);
 }
 
 int init() {
@@ -92,6 +98,7 @@ SDL_AppResult handleEvents() {
                     }
 
                     isMusicRunning = !isMusicRunning;
+                    Mix_SetMusicPosition(musicTime);
                     break;
                 case SDLK_RIGHT:
                     musicTime += 10;
@@ -114,17 +121,7 @@ SDL_AppResult handleEvents() {
 }
 
 SDL_AppResult update(float delta) {
-    if (musicTime < 0) {
-        musicTime = 0;
-    }
-
-    if (musicTime > getMusicLength(currentMusic)) {
-        musicTime = getMusicLength(currentMusic);
-    }
-
-    if (isMusicRunning) {
-        musicTime += delta;
-    }
+    musicTime = getMusicTime(currentMusic);
 
     return SDL_APP_CONTINUE;
 }

@@ -1,5 +1,6 @@
 #include <SDL3/SDL.h>
 #include <cmath>
+#include <vector>
 
 #define WINDOW_TITLE "SDL3 Oval Example"
 #define WINDOW_WIDTH 800
@@ -8,24 +9,27 @@
 SDL_Window* window;
 SDL_Renderer* renderer;
 
-// Draw an oval (ellipse)
-void drawOval(SDL_Renderer* renderer, int centerX, int centerY, int radiusX, int radiusY, int segments, bool filled = false) {
+void drawOval(SDL_Renderer* renderer, int cx, int cy, int rx, int ry, int segments, bool filled = false) {
     const float step = 2.0f * M_PI / segments;
 
     if (filled) {
-        for (int y = -radiusY; y <= radiusY; ++y) {
-            float dy = static_cast<float>(y) / radiusY;
-            int lineRadiusX = static_cast<int>(radiusX * sqrt(1 - dy * dy));
-            for (int x = -lineRadiusX; x <= lineRadiusX; ++x) {
-                SDL_RenderPoint(renderer, centerX + x, centerY + y);
-            }
+        for (int y = -ry; y <= ry; y++) {
+            int dx = (int)(rx * sqrt(1.0 - (double)(y * y) / (ry * ry)));
+            SDL_RenderLine(renderer, cx - dx, cy + y, cx + dx, cy + y);
         }
     } else {
-        for (float angle = 0; angle < 2 * M_PI; angle += step) {
-            int x = static_cast<int>(centerX + radiusX * cos(angle));
-            int y = static_cast<int>(centerY + radiusY * sin(angle));
-            SDL_RenderPoint(renderer, x, y);
+        SDL_FPoint points[segments+1];
+
+        for (int i = 0; i < segments + 1; ++i) {
+            float angle = i * step;
+
+            float x = cx + rx * cosf(angle);
+            float y = cy + ry * sinf(angle);
+
+            points[i] = {x, y};
         }
+
+        SDL_RenderLines(renderer, points, segments+1);
     }
 }
 
@@ -88,7 +92,7 @@ SDL_AppResult render() {
 
     // Draw filled oval
     SDL_SetRenderDrawColor(renderer, 255, 100, 100, 255);
-    drawOval(renderer, 400, 300, 150, 10, 10000, false);
+    drawOval(renderer, 400, 300, 150, 100, 1, true);
 
     SDL_RenderPresent(renderer);
 

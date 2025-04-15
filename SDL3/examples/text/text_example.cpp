@@ -8,6 +8,7 @@
 #define WINDOW_HEIGHT 600
 #define WINDOW_TITLE "game"
 #define BASE_FONT "font.ttf"
+#define TTF_GetError    SDL_GetError
 
 // window
 SDL_Window* window;
@@ -44,7 +45,7 @@ SDL_Texture* createText(const char* text, Uint8 font_size, Uint8 red, Uint8 gree
 
     TTF_Font* font = TTF_OpenFont("font.ttf", font_size);
     if (!font) {
-        SDL_Log("Failed to load font:", SDL_GetError());
+        SDL_Log("Failed to load font:", TTF_GetError());
         return NULL;
     }
 

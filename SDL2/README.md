@@ -1,5 +1,0 @@
-# compile
-
-```bash
-cmake --build .
-```
